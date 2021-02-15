@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+textarea, input, select{
+  border: none;
+  border-radius: 15px;
+  width: 100%;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid gray;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
+
+</style>
+<body>
+  <input type="text" placeholder="autocomplete example" oninput="changeInput(this)">
+  <ul id="list-container">
+  </ul>
+</body>
+<script>
+
+  let fruits = ['apple', 'avocado', 'banana', 'peach', 'pear', 'pineapple']
+  function changeInput(e) {
+    let li = ``
+    for (const v of fruits) {
+      if(new RegExp(e.value).test(v)){
+        li += `<li>${v}</li>`
+      }
+    }
+
+    document.getElementById("list-container").innerHTML = li
+  }
+
+</script>
+</html>
